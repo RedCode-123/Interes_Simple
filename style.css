@@ -1,0 +1,57 @@
+:root {
+    --sm : 1.4rem;
+    --md : 1.6rem;
+    --lg : 2rem;
+    --color-main : rgb(195, 215, 255);
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: x-small;
+}
+.main {
+    display: flex;
+    flex-flow: column nowrap;
+    place-items: center;
+    font-size: var(--md);
+    height: 3rem;
+    padding: 1rem;
+
+}
+.main h1 {
+    margin-bottom: 1rem;
+}
+.main div {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 20rem;
+}
+.main div input {
+    width: 10rem;
+}
+.main ul {
+    height: 55rem;
+    margin: 2rem;
+    list-style-type: none;
+    display: flex;
+    flex-flow: column nowrap;
+    /* El contenedor debe de tener una altura definida para que haga efecto el justify-content */
+    justify-content: space-evenly; 
+    align-items: center;
+}
+
+.main ul li {
+ border: 0.1rem solid black;
+ padding: 0.5rem;
+ margin: 1rem;
+}
+.main ul li:hover {
+    background-color: var(--color-main) ;
+ border: 0.1rem solid var(--color-main) ;
+}
+.main ul li a {
+    text-decoration: none;
+}
