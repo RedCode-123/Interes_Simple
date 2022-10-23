@@ -13,7 +13,7 @@ function btnAction() {
             let respuesta = calcularInteres(values);
             result.innerText = respuesta ;
         } else {
-            result.innerText ='Verifica los datos, solo debe de haber un "?" y números';
+            result.innerText ='Verifica los datos, solo debe de haber un "?" y números positivos.';
         }
 }
 function calcularInteres(arr) {
@@ -37,7 +37,7 @@ function calcularInteres(arr) {
 
 function validateData(...theArg) {
     /* Esta función valida que solo haya un signo de interrogación
-    y números */
+    y números positivos */
     let copy = [ ...theArg ];
     let questionMarksCount = count(copy, '?');
     let filterNumbers = copy.filter(item => item !== '?');
