@@ -42,8 +42,9 @@ function validateData(...theArg) {
     let questionMarksCount = count(copy, '?');
     let filterNumbers = copy.filter(item => item !== '?');
     let areAllNumbers = filterNumbers.every(item => +item * 0 === 0 );
+    let areAllPositive = filterNumbers.every(item => +item >= 0 );
     // console.log(filterNumbers, areAllNumbers);
-    if(questionMarksCount === 1 && areAllNumbers){
+    if(questionMarksCount === 1 && areAllNumbers && areAllPositive){
         return copy ;
     } else {
         return undefined ;
