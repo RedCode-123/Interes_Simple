@@ -1,8 +1,8 @@
 :root {
-    --sm : 1.4rem;
-    --md : 1.6rem;
-    --lg : 2rem;
-    --color-main : rgb(195, 215, 255);
+    --sm: 1.4rem;
+    --md: 1.6rem;
+    --lg: 2rem;
+    --color-main: rgb(195, 215, 255);
 }
 * {
     box-sizing: border-box;
