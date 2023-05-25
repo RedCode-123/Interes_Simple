@@ -7,14 +7,15 @@ function btnAction() {
         capital = document.querySelector("#capital").value,
         rendimiento = document.querySelector("#rendimiento").value,
         tiempo = document.querySelector("#tiempo").value,
-        result = document.querySelector(".result"),
-        values = validateData(interes, capital, rendimiento, tiempo);
-    if (values !== undefined) {
+        result = document.querySelector(".result")
+    try {
+        let values = validateData(interes, capital, rendimiento, tiempo);
         let respuesta = calcularInteres(values);
         result.innerText = respuesta;
-    } else {
-        result.innerText = 'Verifica los datos, solo debe de haber un "?" y números positivos.';
+    } catch (error) {
+        result.innerHTML = error.message;
     }
+
 }
 function calcularInteres(arr) {
     let copy = [...arr];
@@ -35,6 +36,11 @@ function calcularInteres(arr) {
     }
 }
 
+function QuestionMarkException(message) {
+    this.message = message;
+    this.name = "QuestionMarkException";
+}
+
 function validateData(...theArg) {
     /* Esta función valida que solo haya un signo de interrogación
     y números positivos */
@@ -44,10 +50,21 @@ function validateData(...theArg) {
     let areAllNumbers = filterNumbers.every(item => +item * 0 === 0);
     let areAllPositive = filterNumbers.every(item => +item >= 0);
     // console.log(filterNumbers, areAllNumbers);
+    if (!areAllNumbers) {
+        throw new TypeError('Tres de los valores deben de ser números');
+    }
+    if (questionMarksCount === 0) {
+        throw new QuestionMarkException('Debe de haber por lo menos un "?"');
+    }
+    if (questionMarksCount > 1) {
+        throw new QuestionMarkException('No puede haber más de un "?"');
+    }
+    if (!areAllPositive) {
+        throw new RangeError('No se aceptan números negativos!')
+    }
+
     if (questionMarksCount === 1 && areAllNumbers && areAllPositive) {
         return copy;
-    } else {
-        return undefined;
     }
 
 }
